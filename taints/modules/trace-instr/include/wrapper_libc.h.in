@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <pthread.h>
+#include <ctype.h>
+#include <fcntl.h>
+// extend include list for libraries for which functions are overwritten here
+
+@WRAPPERCALL@(fgetc, int, FILE * stream);
+@WRAPPERCALL@(getc, int, FILE *  stream);
+@WRAPPERCALL@(ungetc, int, int, FILE *  stream);
+@WRAPPERCALL@(fgets, char *, char * restrict str, int size, FILE * restrict stream);
+@WRAPPERCALL@(gets,  char *, char * restrict str);
+@WRAPPERCALL@(read,  int, int, void * buffer, size_t size);
+@WRAPPERCALL@(fread,  size_t, void *, size_t, size_t, FILE *);
+@WRAPPERCALL@(fscanf,  int, FILE *, const char *, ...);
+@WRAPPERCALL@(recv,  ssize_t, int, void * buffer, size_t size, int flags);
+@WRAPPERCALL@(fork,  int, void);
+@WRAPPERCALL@(pthread_create,  int, pthread_t*, const pthread_attr_t*, void *(void *), void *);
+@WRAPPERCALL@(exit,  void, int);
+@WRAPPERCALL@(close,  int, int);
+@WRAPPERCALL@(fclose,  int, FILE*);
+@WRAPPERCALL@(open,  int, const char*, int);
+@WRAPPERCALL@(dup,  int, int);
+@WRAPPERCALL@(dup2,  int, int, int);
+@WRAPPERCALL@(vsnprintf, int, char*, size_t, const char*, va_list);
+@WRAPPERCALL@(vsnprintf_chk, int, char*, size_t, int, size_t, const char*, va_list);
+@WRAPPERCALL@(isdigit, int, int);
+@WRAPPERCALL@(islower, int, int);
+@WRAPPERCALL@(isupper, int, int);
+@WRAPPERCALL@(isalpha, int, int);
+@WRAPPERCALL@(isxdigit, int, int);
+@WRAPPERCALL@(isspace, int, int);
+@WRAPPERCALL@(isprint, int, int);
+@WRAPPERCALL@(isgraph, int, int);
+@WRAPPERCALL@(isblank, int, int);
+@WRAPPERCALL@(iscntrl, int, int);
+@WRAPPERCALL@(ispunct, int, int);
+@WRAPPERCALL@(isalnum, int, int);
+@WRAPPERCALL@(strtod, double, const char*, char**);
+@WRAPPERCALL@(strtold, long double, const char*, char**);
+@WRAPPERCALL@(strtof, float, const char*, char**);
+@WRAPPERCALL@(strtol, long int, const char*, char**, int);
+@WRAPPERCALL@(strtoll, long long int, const char*, char**, int);
+@WRAPPERCALL@(strtoul, unsigned long int, const char*, char**, int);
+@WRAPPERCALL@(strtoull, unsigned long long int, const char*, char**, int);
+

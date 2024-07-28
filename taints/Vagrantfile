@@ -1,0 +1,69 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "hashicorp/bionic64"
+  config.vm.hostname = "cmimidvm"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 8096
+    v.cpus = 4
+  end
+  config.vm.provision :shell, inline: <<-SCRIPT
+      pwd
+      apt-get update
+      apt-get install -y openjdk-11-jdk
+      apt-get install -y gradle
+      # gradle --version == 4.4.1
+      apt-get install -y subversion
+      apt-get install -y cmake
+      apt-get install -y ninja-build
+      apt-get install -y subversion
+      apt-get install -y python3-venv
+      apt-get install -y build-essential
+      apt-get install -y gcc-7
+      apt-get install -y clang-8
+      apt-get install -y libclang-8-dev
+
+      apt-get install -y clang-format-8
+      apt-get install -y python3-venv
+
+      #apt-get install -y g++-7
+      #apt-get install -y gcc-7-multilibs
+      #apt-get install -y g++-7-multilibs
+      apt-get install -y jq
+
+      pwd
+      ls
+      # sudo apt-get install meson
+      if [[ ! -f meson_0.49.2-1_all.deb ]]
+      then 
+        wget http://ftp.debian.org/debian/pool/main/m/meson/meson_0.49.2-1_all.deb
+      fi
+      dpkg -i meson_0.49.2-1_all.deb
+
+      pwd
+      ls
+      if [[ ! -f  libjson-c4_0.13.1+dfsg-4_amd64.deb ]]
+      then
+        wget http://cz.archive.ubuntu.com/ubuntu/pool/main/j/json-c/libjson-c4_0.13.1+dfsg-4_amd64.deb
+      fi
+      dpkg -i libjson-c4_0.13.1+dfsg-4_amd64.deb
+      # sudo apt-get install libjson-c3
+      # sudo apt-get install libjson-c-dev
+      if [[ ! -f  libjson-c-dev_0.13.1+dfsg-4_amd64.deb ]]
+      then
+        wget http://cz.archive.ubuntu.com/ubuntu/pool/main/j/json-c/libjson-c-dev_0.13.1+dfsg-4_amd64.deb
+      fi
+      dpkg -i libjson-c-dev_0.13.1+dfsg-4_amd64.deb
+
+      #./scripts/setup_llvm_clang.sh  
+
+      #export PATH=$HOME/toolchains/llvm+clang-401-x86_64-linux-gnu/bin:$PATH
+
+      #meson build/debug --prefix="$(pwd)/install"
+
+      #ninja -C build/debug install
+
+      # pip install pudb
+      # pip install wheel
+      # pip install fuzzingbook
+  SCRIPT
+  config.disksize.size = '80GB'
+end
