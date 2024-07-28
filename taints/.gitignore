@@ -9,7 +9,7 @@ install/
 *.gz
 *metadata
 *.txt
-*.json
+# *.json
 modules/trace-taint/sources/out/
 *venv
 
