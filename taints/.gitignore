@@ -7,7 +7,7 @@ build/
 install/
 *.dSYM*
 *.gz
-*metadata
+# *metadata
 *.txt
 # *.json
 modules/trace-taint/sources/out/
@@ -175,7 +175,7 @@ tags
 .mtj.tmp/
 
 # Package Files #
-*.jar
+# *.jar
 *.war
 *.ear
 *.zip
