@@ -1,4 +1,4 @@
-llvm_dep = dependency('llvm', version : ['>=4.0', '<4.1'], modules : ['core'])
+llvm_dep = dependency('llvm', version : ['>=4.0', '<4.1'], modules : ['core'], method: 'config-tool')
 
 traceinstr_inc = include_directories('include')
 
